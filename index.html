@@ -2,1385 +2,757 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom Studio | Jasa Rias Kecantikan Profesional</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- SEO Meta -->
+    <title>Syahdan Frahira | Jasa Website & Joki Tugas</title>
+    <meta name="description" content="Pusat layanan jasa pembuatan website profesional dan jasa joki tugas terpercaya. Cepat, berkualitas, dan aman. Dikelola oleh Syahdan Frahira.">
+    <meta name="keywords" content="Syahdan Frahira, jasa pembuatan website, joki tugas, jasa website murah, jasa joki tugas terpercaya, pembuatan web profesional">
+    <meta name="author" content="Syahdan Frahira">
+    <meta property="og:title" content="Syahdan Frahira | Jasa Website & Joki Tugas">
+    <meta property="og:description" content="Jasa pembuatan website & joki tugas terpercaya - Syahdan Frahira">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%236c5ce7'/%3E%3Ctext x='50' y='72' font-family='Arial' font-size='50' fill='white' text-anchor='middle' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    
     <style>
-        :root {
-            --pink-light: #FFE8F0;
-            --pink-medium: #F9C5D5;
-            --pink-dark: #F2789F;
-            --pink-accent: #EE6AA7;
-            --white: #FFFFFF;
-            --gray-light: #F9F9F9;
-            --gray-text: #666666;
-            --shadow: 0 5px 15px rgba(242, 120, 159, 0.1);
-            --rounded: 15px;
-            --transition: all 0.3s ease;
-        }
-        
+        /* ===== CSS RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a363d9;
+            --accent: #00cec9;
+            --white: #ffffff;
+            --soft-gray: #f8fafc;
+            --dark-text: #1e293b;
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --shadow: 0 8px 32px rgba(108, 92, 231, 0.15);
+            
+            --gradient-hero: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
+            --gradient-primary: linear-gradient(145deg, #6c5ce7, #a363d9);
+            --gradient-accent: linear-gradient(145deg, #00cec9, #6c5ce7);
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            --bg-body: var(--white);
+            --text-primary: var(--dark-text);
+            --card-bg: rgba(255,255,255,0.8);
+            --footer-text: #334155;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f0b1a;
+            --text-primary: #e2e8f0;
+            --card-bg: rgba(30, 27, 46, 0.8);
+            --footer-text: #94a3b8;
+            --glass-bg: rgba(15, 11, 26, 0.4);
+            --shadow: 0 8px 32px rgba(108, 92, 231, 0.2);
+            --gradient-hero: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #333;
-            background-color: var(--white);
+            transition: background-color 0.3s ease, color 0.2s ease;
+            min-height: 100vh;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            color: var(--pink-accent);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            font-size: 28px;
-            color: var(--pink-accent);
-            margin-right: 10px;
-        }
-        
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--pink-dark);
-        }
-        
-        .logo-text span {
-            color: var(--pink-accent);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--pink-dark);
-            font-weight: 500;
-            font-size: 16px;
-            transition: var(--transition);
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--pink-accent);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--pink-accent);
-            bottom: 0;
-            left: 0;
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--pink-dark);
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--pink-light) 0%, var(--white) 100%);
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .hero-text {
-            flex: 1;
-            padding-right: 40px;
-        }
-        
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--pink-accent);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray-text);
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--pink-accent);
-            color: var(--white);
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(238, 106, 167, 0.3);
-        }
-        
-        .btn:hover {
-            background-color: var(--pink-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(238, 106, 167, 0.4);
-        }
-        
-        .btn-whatsapp {
-            background-color: #25D366;
-            margin-left: 10px;
-        }
-        
-        .btn-whatsapp:hover {
-            background-color: #1DA851;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            border-radius: var(--rounded);
-            box-shadow: var(--shadow);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        /* Section Styling */
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: var(--gray-text);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* MUA Categories */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .tab-btn {
-            background-color: var(--pink-light);
-            color: var(--pink-dark);
-            border: none;
-            padding: 12px 28px;
-            margin: 0 10px 10px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .tab-btn.active {
-            background-color: var(--pink-accent);
-            color: var(--white);
-        }
-        
-        .tab-btn:hover:not(.active) {
-            background-color: var(--pink-medium);
-        }
-        
-        /* MUA Cards */
-        .mua-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .mua-card {
-            background-color: var(--white);
-            border-radius: var(--rounded);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .mua-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(242, 120, 159, 0.15);
-        }
-        
-        .mua-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        
-        .mua-info {
-            padding: 25px;
-        }
-        
-        .mua-name {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-        
-        .mua-category {
-            display: inline-block;
-            background-color: var(--pink-light);
-            color: var(--pink-accent);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        
-        .mua-detail {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: var(--gray-text);
-        }
-        
-        .mua-detail i {
-            color: var(--pink-accent);
-            margin-right: 10px;
-            width: 20px;
-        }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-        }
-        
-        .stars {
-            color: #FFC107;
-            margin-right: 10px;
-        }
-        
-        .gallery-btn {
-            display: block;
-            width: 100%;
-            background-color: var(--pink-light);
-            color: var(--pink-accent);
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            border-top: 1px solid var(--pink-medium);
-            transition: var(--transition);
-        }
-        
-        .gallery-btn:hover {
-            background-color: var(--pink-medium);
-        }
-        
-        /* Booking Form */
-        .booking-section {
-            background-color: var(--pink-light);
-            border-radius: var(--rounded);
-            padding: 50px;
-            margin-top: 40px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--pink-dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 14px 20px;
-            border: 1px solid var(--pink-medium);
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            transition: var(--transition);
-            background-color: var(--white);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--pink-accent);
-            box-shadow: 0 0 0 3px rgba(242, 120, 159, 0.2);
-        }
-        
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -15px;
-        }
-        
-        .form-col {
-            flex: 1;
-            padding: 0 15px;
-            min-width: 250px;
-        }
-        
-        .form-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--pink-dark);
-            color: var(--white);
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        
-        .footer-col {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
-            padding-right: 30px;
-        }
-        
-        .footer-col h3 {
-            color: var(--white);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .footer-col p, .footer-col a {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
-            display: block;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-col a:hover {
-            color: var(--white);
-            padding-left: 5px;
-        }
-        
-        .social-icons {
-            display: flex;
-            margin-top: 20px;
-        }
-        
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        
-        .social-icons a:hover {
-            background-color: var(--pink-accent);
-            padding-left: 0;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-        
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 100;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        
-        .whatsapp-float:hover {
-            background-color: #1DA851;
-            transform: scale(1.1);
-        }
-        
-        /* Modal Success */
-        .modal {
-            display: none;
+
+        /* Animated background */
+        .bg-animated {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1100;
-            justify-content: center;
-            align-items: center;
+            z-index: -2;
+            background: var(--gradient-hero);
+            opacity: 0.6;
+            transition: opacity 0.5s;
         }
-        
-        .modal-content {
-            background-color: var(--white);
-            border-radius: var(--rounded);
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            text-align: center;
-        }
-        
-        .close-modal {
+
+        .bg-animated::before {
+            content: '';
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            color: var(--pink-dark);
-            cursor: pointer;
-            transition: var(--transition);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(108, 92, 231, 0.12) 0%, transparent 30%),
+                        radial-gradient(circle at 70% 80%, rgba(0, 206, 201, 0.1) 0%, transparent 35%);
+            animation: rotateBg 40s linear infinite;
         }
-        
-        .close-modal:hover {
-            color: var(--pink-accent);
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        
-        .modal-icon {
-            font-size: 60px;
-            color: #25D366;
-            margin-bottom: 20px;
-        }
-        
-        .modal h3 {
-            margin-bottom: 15px;
-            color: var(--pink-accent);
-        }
-        
-        .modal p {
-            color: var(--gray-text);
-            margin-bottom: 25px;
-        }
-        
-        .modal-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        /* Gallery Modal */
-        .gallery-modal .modal-content {
+
+        .container {
             max-width: 800px;
-            max-height: 80%;
-            overflow-y: auto;
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-md);
+            position: relative;
+            z-index: 5;
         }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .gallery-img {
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 150px;
-            object-fit: cover;
+            height: 100%;
+            background: linear-gradient(145deg, var(--white), #f0eaff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        [data-theme="dark"] #loading-screen {
+            background: linear-gradient(145deg, #0f0b1a, #1a1630);
+        }
+
+        .loading-content {
+            text-align: center;
+            animation: fadePulse 2s infinite;
+        }
+
+        .loading-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-sm);
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            margin: var(--space-md) auto;
+            border: 4px solid rgba(108,92,231,0.1);
+            border-top: 4px solid var(--primary);
+            border-right: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(108,92,231,0.2);
             border-radius: 10px;
+            margin: var(--space-md) auto;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            transition: width 0.2s ease;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(720deg); }
+        }
+
+        @keyframes fadePulse {
+            0% { opacity: 0.9; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.9; transform: scale(1); }
+        }
+
+        /* Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: var(--space-xl) var(--space-lg);
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(108,92,231,0.2);
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .popup-overlay.active .popup-card {
+            transform: scale(1);
+        }
+
+        .popup-card h3 {
+            font-size: 1.6rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-sm);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
             cursor: pointer;
-            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(108,92,231,0.3);
+            transition: all 0.3s ease;
         }
-        
-        .gallery-img:hover {
-            transform: scale(1.03);
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108,92,231,0.4);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .booking-section {
-                padding: 40px 30px;
-            }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            opacity: 0.7;
         }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 0;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .form-col {
-                flex: 100%;
-            }
-            
-            .form-actions {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                margin: 5px 0;
-            }
-            
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-            }
+
+        /* Profile */
+        .profile {
+            text-align: center;
+            margin-bottom: var(--space-xl);
         }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                padding: 12px 28px;
-            }
-            
-            .category-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab-btn {
-                width: 80%;
-                margin-bottom: 10px;
-            }
-            
-            .mua-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .booking-section {
-                padding: 30px 20px;
-            }
+
+        .avatar-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-md);
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            padding: 4px;
+            box-shadow: 0 10px 30px rgba(108,92,231,0.3);
+            animation: float 6s ease-in-out infinite;
         }
-        
-        /* Fallback for missing images */
-        .mua-img.fallback {
-            background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-medium) 100%);
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--pink-dark);
-            font-size: 3rem;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--primary);
         }
-        
-        .gallery-img.fallback {
-            background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-medium) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--pink-dark);
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .institution-name {
             font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-xs);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: var(--space-md);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--space-sm);
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.15) translateY(-5px);
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        /* Link Cards */
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: var(--space-md) var(--space-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(108,92,231,0.25);
+            border-color: var(--accent);
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.6rem;
+        }
+
+        .link-content {
+            flex: 1;
+        }
+
+        .link-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .link-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .link-arrow {
+            font-size: 1.3rem;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: var(--space-xl);
+            color: var(--footer-text);
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 auto var(--space-sm);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-8px);
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+
+        .float-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.15) translateY(-5px);
+        }
+
+        .wa-btn:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: var(--space-md); }
+            .institution-name { font-size: 1.6rem; }
+            .icon-wrapper { width: 48px; height: 48px; font-size: 1.4rem; }
+        }
+
+        /* Ripple Animation */
+        @keyframes rippleAnim {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
         }
     </style>
 </head>
-<body>
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6282169555950?text=Halo%20Bloom%20Studio%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20rias%20kalian" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <div class="logo-icon">🌸</div>
-                    <div class="logo-text">bloom<span>studio</span></div>
-                </a>
-                
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#mua">Makeup Artist</a></li>
-                    <li><a href="#booking">Pemesanan</a></li>
-                    <li><a href="#footer">Kontak</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Wujudkan Kecantikan Alami dalam Setiap Riasan</h1>
-                    <p>Bloom Studio menghadirkan makeup artist profesional untuk setiap momen spesial Anda. Dari rias natural hingga glamor, kami siap membuat Anda tampil percaya diri dan memukau.</p>
-                    <div class="hero-buttons">
-                        <a href="#booking" class="btn">Pesan Sekarang</a>
-                        <a href="https://wa.me/6282169555950?text=Halo%20Bloom%20Studio%2C%20saya%20ingin%20konsultasi%20tentang%20layanan%20rias" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="assets/hero.jpg" alt="Model dengan riasan profesional" onerror="this.src='https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80'">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Makeup Artist Section -->
-    <section class="section" id="mua">
-        <div class="container">
-            <div class="section-title">
-                <h2>Pilih Makeup Artist Anda</h2>
-                <p>Kami memiliki tim makeup artist berpengalaman siap membantu Anda tampil maksimal sesuai kebutuhan dan preferensi.</p>
-            </div>
-            
-            <div class="category-tabs">
-                <button class="tab-btn active" data-category="all">Semua</button>
-                <button class="tab-btn" data-category="professional">Profesional</button>
-                <button class="tab-btn" data-category="umum">Umum</button>
-            </div>
-            
-            <div class="mua-grid" id="muaGrid">
-                <!-- MUA cards will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section class="section" id="booking">
-        <div class="container">
-            <div class="section-title">
-                <h2>Pesan Layanan Rias</h2>
-                <p>Isi formulir berikut untuk memesan jasa rias dari makeup artist pilihan Anda.</p>
-            </div>
-            
-            <div class="booking-section">
-                <form id="bookingForm">
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label class="form-label" for="name">Nama Lengkap</label>
-                                <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap" required>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label class="form-label" for="phone">Nomor WhatsApp</label>
-                                <input type="tel" id="phone" class="form-control" placeholder="Contoh: 081234567890" required>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label class="form-label" for="date">Tanggal Rias</label>
-                                <input type="date" id="date" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label class="form-label" for="time">Waktu Rias</label>
-                                <select id="time" class="form-control" required>
-                                    <option value="">Pilih waktu</option>
-                                    <option value="08:00">08:00</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="16:00">16:00</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label class="form-label" for="service">Jenis Layanan</label>
-                                <select id="service" class="form-control" required>
-                                    <option value="">Pilih jenis rias</option>
-                                    <option value="natural">Rias Natural / Sehari-hari</option>
-                                    <option value="bridal">Rias Pengantin</option>
-                                    <option value="party">Rias Pesta / Acara Khusus</option>
-                                    <option value="editorial">Rias Editorial / Foto</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label class="form-label" for="muaSelect">Makeup Artist</label>
-                                <select id="muaSelect" class="form-control" required>
-                                    <option value="">Pilih makeup artist</option>
-                                    <!-- Options will be populated by JavaScript -->
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="notes">Catatan Tambahan (opsional)</label>
-                        <textarea id="notes" class="form-control" rows="4" placeholder="Tambahkan catatan khusus seperti alergi produk, preferensi riasan, lokasi rias, dll."></textarea>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> Konfirmasi via WhatsApp
-                        </button>
-                        <button type="button" class="btn" id="simulateBtn">
-                            Simulasi Pemesanan
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px;">
-                        <div class="logo-icon">🌸</div>
-                        <div class="logo-text">bloom<span>studio</span></div>
-                    </div>
-                    <p>Membantu setiap perempuan tampil percaya diri dengan riasan yang sesuai kepribadian dan kebutuhan.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/6282169555950" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Layanan</h3>
-                    <a href="#mua">Makeup Artist Profesional</a>
-                    <a href="#mua">Makeup Artist Umum</a>
-                    <a href="#booking">Pemesanan Online</a>
-                    <a href="#">Konsultasi Rias</a>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Kontak Kami</h3>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Jl. Kecantikan No. 123, Jakarta</p>
-                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> (021) 555-7890</p>
-                    <p><i class="fab fa-whatsapp" style="margin-right: 10px;"></i> 0812-3456-7890</p>
-                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@bloomstudio.com</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2025 Bloom Studio. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeSuccessModal">&times;</span>
-            <div class="modal-icon">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <h3>Pesanan Siap Dikirim!</h3>
-            <p>Pesanan Anda telah berhasil dibuat. Klik tombol di bawah untuk mengirim pesanan ke WhatsApp Bloom Studio secara otomatis.</p>
-            <div class="modal-buttons">
-                <a id="whatsappSendBtn" class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Kirim ke WhatsApp
-                </a>
-                <button class="btn" id="closeModalBtn">Tutup</button>
+<body data-theme="light">
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h2>Syahdan Frahira</h2>
+            <div class="spinner"></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
             </div>
         </div>
     </div>
 
-    <!-- Gallery Modal -->
-    <div class="modal gallery-modal" id="galleryModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeGalleryModal">&times;</span>
-            <h3 id="modalTitle">Galeri Hasil Riasan</h3>
-            <div class="gallery-grid" id="modalGallery">
-                <!-- Gallery images will be populated by JavaScript -->
-            </div>
+    <!-- Background -->
+    <div class="bg-animated"></div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/6281234567890?text=Halo%20Syahdan,%20saya%20butuh%20jasa%20website/joki%20tugas" class="float-btn wa-btn" target="_blank" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <div class="float-btn theme-toggle" id="themeToggle" title="Ganti Tema">
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
         </div>
     </div>
 
+    <!-- Welcome Popup -->
+    <div class="popup-overlay" id="welcomePopup">
+        <div class="popup-card">
+            <span class="close-btn" id="closeWelcome">&times;</span>
+            <h3>Halo! Saya Syahdan Frahira</h3>
+            <p>Siap membantu Anda dengan <strong>jasa pembuatan website profesional</strong> dan <strong>jasa joki tugas</strong> yang cepat, aman, dan terpercaya.</p>
+            <button class="btn" id="exploreBtn">Lihat Layanan</button>
+        </div>
+    </div>
+
+    <!-- Promo Popup -->
+    <div class="popup-overlay" id="promoPopup">
+        <div class="popup-card">
+            <span class="close-btn" id="closePromo">&times;</span>
+            <h3>🔥 Promo Spesial!</h3>
+            <p>Diskon 20% untuk pembuatan website pertama Anda. Gratis konsultasi! Hubungi saya sekarang.</p>
+            <a href="https://wa.me/6281234567890" class="btn" target="_blank">Hubungi Sekarang</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="profile" data-aos="fade-down">
+            <div class="avatar-wrapper">
+                <div class="avatar">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+            </div>
+            <h1 class="institution-name">Syahdan Frahira</h1>
+            <p class="tagline">Jasa Pembuatan Website & Joki Tugas Terpercaya</p>
+            <div class="social-icons">
+                <a href="https://instagram.com/syahdanfra" class="social-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/6281234567890" class="social-icon" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://github.com/syahdanfra" class="social-icon" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/syahdanfra" class="social-icon" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://tiktok.com/@syahdanfra" class="social-icon" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </section>
+
+        <div class="links-grid">
+            <a href="https://wa.me/6281234567890?text=Saya%20butuh%20jasa%20pembuatan%20website" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="0">
+                <div class="icon-wrapper"><i class="fa-solid fa-code"></i></div>
+                <div class="link-content">
+                    <div class="link-title">💻 Jasa Pembuatan Website</div>
+                    <div class="link-desc">Company profile, landing page, toko online, dashboard admin</div>
+                </div>
+                <div class="link-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://wa.me/6281234567890?text=Saya%20butuh%20jasa%20joki%20tugas" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="50">
+                <div class="icon-wrapper"><i class="fa-solid fa-pen-ruler"></i></div>
+                <div class="link-content">
+                    <div class="link-title">📚 Jasa Joki Tugas</div>
+                    <div class="link-desc">Tugas kuliah, makalah, presentasi, coding, dan lainnya</div>
+                </div>
+                <div class="link-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="#" class="link-card" data-aos="fade-up" data-aos-delay="100" id="portfolioBtn">
+                <div class="icon-wrapper"><i class="fa-solid fa-diagram-project"></i></div>
+                <div class="link-content">
+                    <div class="link-title">📁 Portofolio Website</div>
+                    <div class="link-desc">Lihat hasil karya website yang sudah saya buat</div>
+                </div>
+                <div class="link-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="#" class="link-card" data-aos="fade-up" data-aos-delay="150" id="testimonialBtn">
+                <div class="icon-wrapper"><i class="fa-solid fa-star"></i></div>
+                <div class="link-content">
+                    <div class="link-title">⭐ Testimonial Klien</div>
+                    <div class="link-desc">Apa kata mereka tentang layanan saya?</div>
+                </div>
+                <div class="link-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="#" class="link-card" data-aos="fade-up" data-aos-delay="200" id="faqBtn">
+                <div class="icon-wrapper"><i class="fa-solid fa-circle-question"></i></div>
+                <div class="link-content">
+                    <div class="link-title">❓ Panduan & FAQ</div>
+                    <div class="link-desc">Pertanyaan umum seputar layanan</div>
+                </div>
+                <div class="link-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://wa.me/6281234567890" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="250">
+                <div class="icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+                <div class="link-content">
+                    <div class="link-title">📞 Hubungi Kontak Resmi</div>
+                    <div class="link-desc">Chat langsung dengan saya di WhatsApp</div>
+                </div>
+                <div class="link-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+        </div>
+
+        <footer class="footer" data-aos="fade-up">
+            <div class="back-to-top" id="backToTop">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+            <p>&copy; 2026 Syahdan Frahira. All rights reserved.</p>
+            <p style="font-size:0.8rem; opacity:0.7;">Jasa Pembuatan Website & Joki Tugas Terpercaya</p>
+        </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Data Makeup Artist dengan foto lokal
-        const makeupArtists = [
-            {
-                id: 1,
-                name: "Alya Putri",
-                category: "professional",
-                experience: "8 tahun",
-                rating: 4.9,
-                image: "../assets/mua/1.jpeg",
-                gallery: [
-                    "https://scontent.fcgk4-2.fna.fbcdn.net/v/t1.15752-9/597732026_1192783046144245_894642968763683258_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Yv-CJFCXlS4Q7kNvwH_hkXx&_nc_oc=Adn6AB3JaD5jUFblR2dVdeW8Iv9inoyyxXwA1Gmw1vnBxPbmpmVUicIbRf-7QUlEt8w&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-2.fna&oh=03_Q7cD4AGnxeztIJujFNZNNf6yCDU2NqBR6Inb9HRLM-mqet-rnA&oe=696A1C08",
-                    "https://scontent.fcgk4-5.fna.fbcdn.net/v/t1.15752-9/510251028_1430692308133205_1147803621816271639_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=bUYhxtRxqv0Q7kNvwHC0B30&_nc_oc=AdlcS0avvI5m-BCd5eFAKXQRHI7Kq7OfzXRHj1reGZlLF8-UdpM9Vh-yY13-hhAAw2s&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-5.fna&oh=03_Q7cD4AGTpwzGsjpgCW3hMySobjSONYkHhZfirNYrFL_xs6YxZA&oe=696A2876",
-                    "https://scontent.fcgk4-6.fna.fbcdn.net/v/t1.15752-9/597233948_905484778472165_6882014878257150840_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=L3diwnT5LnoQ7kNvwHIM-qj&_nc_oc=Adn30_5v4hCo308yxMyThgFa4__vduXl_C05x2PxekTVaqnME9WwdV6sh7tCmSGTr5A&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-6.fna&oh=03_Q7cD4AFU8Ebe5g_M2GPW4gWWLltTSDw01kVG2M_RHd1QG3iXJg&oe=696A2312"
-                ]
-            },
-            {
-                id: 2,
-                name: "Nayla Lestari",
-                category: "professional",
-                experience: "6 tahun",
-                rating: 4.8,
-                image: "https://scontent.fcgk4-2.fna.fbcdn.net/v/t1.15752-9/597439840_1430022825311017_8362777466081719217_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=ZxZcY_MMh0kQ7kNvwEROUCb&_nc_oc=AdnGJU6tIOx1qQIUwYbDKoLkVLtbvwO4CESJjoCmISug6i3w2Q3agm6p8LMHZuaSlyI&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-2.fna&oh=03_Q7cD4AFAsdo0UbffPoW2vX_0y5g1ytUpC0g3mad2eYtaCTT8Jw&oe=696A100E",
-                gallery: [
-                    "https://scontent.fcgk4-6.fna.fbcdn.net/v/t1.15752-9/598030690_1542167550433161_1843100636427367821_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=EpmAz_sSHzcQ7kNvwHf7dMa&_nc_oc=Adm636ejJeO4REb3saK3mKDyrgIIWRUgqN_EOVpx8uOqoptQqrWMxsmLq15_w6TQQn0&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-6.fna&oh=03_Q7cD4AECiwJmfImg6yTM57AsTOx4f6fzKSlDvyOw4-8tEzXYsg&oe=696A01BC",
-                    "https://scontent.fcgk4-5.fna.fbcdn.net/v/t1.15752-9/597709290_1358843911981701_1380987764641165771_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=IZepnDKSdeIQ7kNvwEfiSrQ&_nc_oc=AdnPBZFrH8_e9Ix68--V4z2f8QJbUEfN5W3ZYtq47rjMmFuyPWtyapZFYBbY9lQnxfQ&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-5.fna&oh=03_Q7cD4AHmWhWATaimBU-_p-ESlmP239a4RDzF6eq4rCtrcFn-Rw&oe=696A2012",
-                    "https://scontent.fcgk4-5.fna.fbcdn.net/v/t1.15752-9/597709290_1358843911981701_1380987764641165771_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=IZepnDKSdeIQ7kNvwEfiSrQ&_nc_oc=AdnPBZFrH8_e9Ix68--V4z2f8QJbUEfN5W3ZYtq47rjMmFuyPWtyapZFYBbY9lQnxfQ&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-5.fna&oh=03_Q7cD4AHmWhWATaimBU-_p-ESlmP239a4RDzF6eq4rCtrcFn-Rw&oe=696A2012"
-                ]
-            },
-            {
-                id: 3,
-                name: "Kayla Aurelia",
-                category: "umum",
-                experience: "3 tahun",
-                rating: 4.7,
-                image: "https://scontent.fcgk4-6.fna.fbcdn.net/v/t1.15752-9/597458403_1472596593840946_660570295526566711_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Klivi53tZ-cQ7kNvwFp9ofK&_nc_oc=AdlmG59U9Bk8tbXwNaE38vn_WnWa1qjKagz97K9VJb_eh1mC0TVkTVFbZZyacK0kgHI&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-6.fna&oh=03_Q7cD4AF1hVyLoWBNnZCzODZzR8gRgRKyCUjJNui4dyknqpFc-g&oe=696A0164",
-                gallery: [
-                    "https://scontent.fcgk4-5.fna.fbcdn.net/v/t1.15752-9/597220930_1381048333572288_2125038285966856995_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=107&ccb=1-7&_nc_sid=0024fc&_nc_ohc=CpTsgkkwmlIQ7kNvwHA2hWt&_nc_oc=AdkIs69nVm4uMuu08Tyq2-mrqhnHHlUAqReiHifOl_3bdnw17KVqzfum3gMRdJPgWx0&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-5.fna&oh=03_Q7cD4AEf9HDKo2rjTjjn89EgCF3bIn9Bfzhnnoz9Wg6XYdwYyw&oe=696A225D",
-                    "https://scontent.fcgk4-5.fna.fbcdn.net/v/t1.15752-9/597216935_1172398774981274_4032115538735024097_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=IJ5D4N9RukkQ7kNvwFSphLp&_nc_oc=Adk3-dRh_4JW9mmEnYb1LhYMHGjYJ8g21mtfYUXSScKcVw4Ig2RqQ8k6F4SMjLHjF0A&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-5.fna&oh=03_Q7cD4AFOwiKqgUh6muw0AMJzHritKsLgWcMF4ISlB7RfhKmf5Q&oe=696A0DD2",
-                    "https://scontent.fcgk4-6.fna.fbcdn.net/v/t1.15752-9/597459968_1419253296577048_3676295105742272671_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0ZDAmx1cBBgQ7kNvwGgFGIm&_nc_oc=AdlRTS7uKA2Mf4b-MfDYsWbWLllCobFyPkokag4XqcMEWMGcLELnBn24aksRRzCasXc&_nc_ad=z-m&_nc_cid=1135&_nc_zt=23&_nc_ht=scontent.fcgk4-6.fna&oh=03_Q7cD4AHRyGB3mWFvHC2Xh5RM9StTRCy-hlZeZiW0RykHgpxUSQ&oe=696A1D51"
-                ]
-            },
-            {
-                id: 4,
-                name: "Sasha Elvina",
-                category: "umum",
-                experience: "2 tahun",
-                rating: 4.6,
-                image: "assets/mua/4.jpg",
-                gallery: [
-                    "assets/gallery/4-1.jpg",
-                    "assets/gallery/4-2.jpg"
-                ]
-            },
-            {
-                id: 5,
-                name: "Angela Putri",
-                category: "professional",
-                experience: "10 tahun",
-                rating: 5.0,
-                image: "assets/mua/5.jpg",
-                gallery: [
-                    "assets/gallery/5-1.jpg",
-                    "assets/gallery/5-2.jpg"
-                ]
-            },
-            {
-                id: 6,
-                name: "Luna Cantika",
-                category: "umum",
-                experience: "1 tahun",
-                rating: 4.5,
-                image: "assets/mua/6.jpg",
-                gallery: [
-                    "assets/gallery/6-1.jpg",
-                    "assets/gallery/6-2.jpg"
-                ]
-            }
-        ];
-
-        // DOM Elements
-        const muaGrid = document.getElementById('muaGrid');
-        const muaSelect = document.getElementById('muaSelect');
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        const bookingForm = document.getElementById('bookingForm');
-        const successModal = document.getElementById('successModal');
-        const closeSuccessModal = document.getElementById('closeSuccessModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const whatsappSendBtn = document.getElementById('whatsappSendBtn');
-        const galleryModal = document.getElementById('galleryModal');
-        const closeGalleryModal = document.getElementById('closeGalleryModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalGallery = document.getElementById('modalGallery');
-        const simulateBtn = document.getElementById('simulateBtn');
-
-        // WhatsApp Configuration
-        const WHATSAPP_NUMBER = "6282169555950"; 
-
-        // Fallback images jika foto lokal tidak ditemukan
-        const fallbackImages = [
-            "https://thetutorialtermux.wordpress.com/wp-content/uploads/2025/12/img-20251215-wa00586371245478876503950.jpg",
-            "https://thetutorialtermux.wordpress.com/wp-content/uploads/2025/12/img-20251215-wa00545510357662585766324.jpg",
-            "https://thetutorialtermux.wordpress.com/wp-content/uploads/2025/12/img-20251215-wa00557683761387693129459.jpg?w=535",
-            "https://thetutorialtermux.wordpress.com/wp-content/uploads/2025/12/img-20251215-wa0056699733488129816418.jpg?w=747",
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-
-        ];
-
-        const fallbackGalleryImages = [
-            "https://images.unsplash.com/photo-1494790108755-2616b786d4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1542599741743-6c8648c6d9e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        ];
-
-        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            // Set min date for booking to today
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('date').setAttribute('min', today);
-            
-            // Set default date to tomorrow
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('date').value = tomorrow.toISOString().split('T')[0];
-            
-            // Render all MUA cards
-            renderMUACards(makeupArtists);
-            
-            // Populate MUA dropdown
-            populateMUADropdown(makeupArtists);
-            
-            // Add event listeners
-            setupEventListeners();
-        });
+            AOS.init({ once: true, offset: 20, duration: 600 });
 
-        // Render MUA cards
-        function renderMUACards(muaList) {
-            muaGrid.innerHTML = '';
+            // Loading Screen
+            const loadingScreen = document.getElementById('loading-screen');
+            const progressFill = document.getElementById('progress-fill');
+            let progress = 0;
             
-            muaList.forEach((mua, index) => {
-                const starRating = '★'.repeat(Math.floor(mua.rating)) + '☆'.repeat(5 - Math.floor(mua.rating));
-                
-                const card = document.createElement('div');
-                card.className = 'mua-card';
-                card.dataset.category = mua.category;
-                
-                // Gunakan fallback image jika foto lokal tidak ditemukan
-                const fallbackImage = fallbackImages[index % fallbackImages.length];
-                
-                card.innerHTML = `
-                    <img src="${mua.image}" alt="${mua.name}" class="mua-img" onerror="this.src='${fallbackImage}'; this.onerror=null; this.classList.add('fallback'); this.innerHTML='🌸';">
-                    <div class="mua-info">
-                        <h3 class="mua-name">${mua.name}</h3>
-                        <span class="mua-category">${mua.category === 'professional' ? 'Profesional' : 'Umum'}</span>
-                        <div class="mua-detail">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Pengalaman: ${mua.experience}</span>
-                        </div>
-                        <div class="mua-detail">
-                            <i class="fas fa-star"></i>
-                            <span>Rating: ${mua.rating}</span>
-                        </div>
-                        <div class="rating">
-                            <div class="stars">${starRating}</div>
-                            <span>${mua.rating}/5</span>
-                        </div>
-                    </div>
-                    <a href="#" class="gallery-btn" data-mua-id="${mua.id}">
-                        <i class="fas fa-images"></i> Lihat Galeri Hasil Riasan
-                    </a>
-                `;
-                
-                muaGrid.appendChild(card);
-            });
-            
-            // Add event listeners to gallery buttons
-            document.querySelectorAll('.gallery-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const muaId = parseInt(this.dataset.muaId);
-                    openGallery(muaId);
-                });
-            });
-        }
+            const interval = setInterval(() => {
+                progress += Math.random() * 20;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    gsap.to(loadingScreen, {
+                        opacity: 0,
+                        duration: 0.8,
+                        onComplete: () => {
+                            loadingScreen.style.visibility = 'hidden';
+                            setTimeout(() => {
+                                document.getElementById('welcomePopup').classList.add('active');
+                            }, 300);
+                        }
+                    });
+                }
+                progressFill.style.width = progress + '%';
+            }, 150);
 
-        // Populate MUA dropdown
-        function populateMUADropdown(muaList) {
-            muaSelect.innerHTML = '<option value="">Pilih makeup artist</option>';
-            
-            muaList.forEach(mua => {
-                const option = document.createElement('option');
-                option.value = mua.id;
-                option.textContent = `${mua.name} (${mua.category === 'professional' ? 'Profesional' : 'Umum'}) - ${mua.rating}★`;
-                muaSelect.appendChild(option);
-            });
-        }
+            // Popup handling
+            const welcomePopup = document.getElementById('welcomePopup');
+            const promoPopup = document.getElementById('promoPopup');
+            const closeWelcome = document.getElementById('closeWelcome');
+            const closePromo = document.getElementById('closePromo');
+            const exploreBtn = document.getElementById('exploreBtn');
 
-        // Format date to Indonesian format
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            return date.toLocaleDateString('id-ID', options);
-        }
-
-        // Generate WhatsApp message
-        function generateWhatsAppMessage(formData) {
-            const { name, phone, date, time, service, muaId, notes } = formData;
-            
-            // Find selected MUA
-            const selectedMUA = makeupArtists.find(m => m.id === parseInt(muaId));
-            const muaName = selectedMUA ? selectedMUA.name : "Belum dipilih";
-            
-            // Format service name
-            let serviceName = "";
-            switch(service) {
-                case "natural": serviceName = "Rias Natural / Sehari-hari"; break;
-                case "bridal": serviceName = "Rias Pengantin"; break;
-                case "party": serviceName = "Rias Pesta / Acara Khusus"; break;
-                case "editorial": serviceName = "Rias Editorial / Foto"; break;
-                default: serviceName = service;
+            function closePopup(popup) {
+                popup.classList.remove('active');
             }
-            
-            // Create message
-            let message = `Halo Bloom Studio, saya ingin memesan layanan rias dengan detail berikut:\n\n`;
-            message += `📋 *DATA PEMESANAN*\n`;
-            message += `Nama: ${name}\n`;
-            message += `Nomor WhatsApp: ${phone}\n\n`;
-            message += `📅 *DETAIL JADWAL*\n`;
-            message += `Tanggal: ${formatDate(date)}\n`;
-            message += `Waktu: ${time} WIB\n\n`;
-            message += `💄 *DETAIL LAYANAN*\n`;
-            message += `Jenis Rias: ${serviceName}\n`;
-            message += `Makeup Artist: ${muaName}\n\n`;
-            
-            if (notes && notes.trim() !== "") {
-                message += `📝 *CATATAN TAMBAHAN*\n`;
-                message += `${notes}\n\n`;
-            }
-            
-            message += `Silakan konfirmasi ketersediaan dan berikan informasi mengenai harga serta pembayaran. Terima kasih!`;
-            
-            return encodeURIComponent(message);
-        }
 
-        // Open gallery modal
-        function openGallery(muaId) {
-            const mua = makeupArtists.find(m => m.id === muaId);
-            if (!mua) return;
+            closeWelcome.onclick = () => closePopup(welcomePopup);
+            closePromo.onclick = () => closePopup(promoPopup);
             
-            modalTitle.textContent = `Galeri Hasil Riasan - ${mua.name}`;
-            modalGallery.innerHTML = '';
-            
-            // Gunakan foto lokal dengan fallback ke gambar online jika tidak ditemukan
-            mua.gallery.forEach((imgUrl, index) => {
-                const img = document.createElement('img');
-                img.src = imgUrl;
-                img.alt = `Hasil riasan oleh ${mua.name}`;
-                img.className = 'gallery-img';
-                
-                // Fallback image jika foto lokal tidak ditemukan
-                const fallbackImage = fallbackGalleryImages[index % fallbackGalleryImages.length];
-                img.onerror = function() {
-                    this.src = fallbackImage;
-                    this.onerror = null;
-                    this.classList.add('fallback');
-                    this.innerHTML = '🌸';
-                };
-                
-                modalGallery.appendChild(img);
-            });
-            
-            galleryModal.style.display = 'flex';
-        }
-
-        // Show success modal
-        function showSuccessModal(formData) {
-            const { name, phone, date, time, service, muaId, notes } = formData;
-            
-            // Generate WhatsApp URL
-            const message = generateWhatsAppMessage(formData);
-            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-            
-            // Update WhatsApp button
-            whatsappSendBtn.href = whatsappUrl;
-            
-            // Show modal
-            successModal.style.display = 'flex';
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Tab filtering
-            tabButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active tab
-                    tabButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter MUA cards
-                    const category = this.dataset.category;
-                    let filteredMUA = makeupArtists;
-                    
-                    if (category !== 'all') {
-                        filteredMUA = makeupArtists.filter(mua => mua.category === category);
-                    }
-                    
-                    renderMUACards(filteredMUA);
-                });
-            });
-            
-            // Mobile menu toggle
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                const icon = this.querySelector('i');
-                icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-            });
-            
-            // Close mobile menu when clicking a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
-                });
-            });
-            
-            // Booking form submission
-            bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const phone = document.getElementById('phone').value;
-                const date = document.getElementById('date').value;
-                const time = document.getElementById('time').value;
-                const service = document.getElementById('service').value;
-                const muaId = document.getElementById('muaSelect').value;
-                const notes = document.getElementById('notes').value;
-                
-                // Validate form
-                if (!name || !phone || !date || !time || !service || !muaId) {
-                    alert("Harap isi semua field yang wajib diisi!");
-                    return;
-                }
-                
-                // Validate phone number (basic validation)
-                const phoneRegex = /^[0-9]{10,13}$/;
-                const cleanPhone = phone.replace(/\D/g, '');
-                if (!phoneRegex.test(cleanPhone)) {
-                    alert("Nomor WhatsApp tidak valid. Harap masukkan nomor yang benar (10-13 digit).");
-                    return;
-                }
-                
-                // Prepare form data
-                const formData = {
-                    name,
-                    phone: cleanPhone,
-                    date,
-                    time,
-                    service,
-                    muaId,
-                    notes
-                };
-                
-                // Show success modal
-                showSuccessModal(formData);
-            });
-            
-            // Simulate button for testing
-            simulateBtn.addEventListener('click', function() {
-                // Fill form with sample data
-                document.getElementById('name').value = "Sari Dewi";
-                document.getElementById('phone').value = "08123456789";
-                document.getElementById('date').value = new Date(Date.now() + 86400000).toISOString().split('T')[0]; // Tomorrow
-                document.getElementById('time').value = "10:00";
-                document.getElementById('service').value = "bridal";
-                document.getElementById('muaSelect').value = "1";
-                document.getElementById('notes').value = "Saya ingin riasan natural dengan aksen soft glam. Lokasi rias di rumah mempelai wanita.";
-                
-                // Show success modal directly for simulation
-                const formData = {
-                    name: "Sari Dewi",
-                    phone: "08123456789",
-                    date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
-                    time: "10:00",
-                    service: "bridal",
-                    muaId: "1",
-                    notes: "Saya ingin riasan natural dengan aksen soft glam. Lokasi rias di rumah mempelai wanita."
-                };
-                
-                showSuccessModal(formData);
-            });
-            
-            // Close modals
-            closeSuccessModal.addEventListener('click', function() {
-                successModal.style.display = 'none';
-            });
-            
-            closeModalBtn.addEventListener('click', function() {
-                successModal.style.display = 'none';
-            });
-            
-            closeGalleryModal.addEventListener('click', function() {
-                galleryModal.style.display = 'none';
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target === successModal) {
-                    successModal.style.display = 'none';
-                }
-                if (e.target === galleryModal) {
-                    galleryModal.style.display = 'none';
-                }
-            });
-            
-            // When WhatsApp is clicked, also reset the form
-            whatsappSendBtn.addEventListener('click', function() {
-                // Reset form after a delay
+            exploreBtn.onclick = () => {
+                closePopup(welcomePopup);
                 setTimeout(() => {
-                    bookingForm.reset();
-                    
-                    // Set default date to tomorrow
-                    const tomorrow = new Date();
-                    tomorrow.setDate(tomorrow.getDate() + 1);
-                    document.getElementById('date').value = tomorrow.toISOString().split('T')[0];
-                    
-                    // Close modal
-                    successModal.style.display = 'none';
-                }, 1000);
+                    promoPopup.classList.add('active');
+                }, 1500);
+            };
+
+            setTimeout(() => {
+                if (!promoPopup.classList.contains('active') && !welcomePopup.classList.contains('active')) {
+                    promoPopup.classList.add('active');
+                }
+            }, 5000);
+
+            window.onclick = (e) => {
+                if (e.target.classList.contains('popup-overlay')) {
+                    e.target.classList.remove('active');
+                }
+            };
+
+            // Dark mode
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const body = document.body;
+
+            themeToggle.onclick = () => {
+                const currentTheme = body.getAttribute('data-theme');
+                if (currentTheme === 'light') {
+                    body.setAttribute('data-theme', 'dark');
+                    themeIcon.className = 'fa-solid fa-sun';
+                } else {
+                    body.setAttribute('data-theme', 'light');
+                    themeIcon.className = 'fa-solid fa-moon';
+                }
+            };
+
+            // Back to top
+            document.getElementById('backToTop').onclick = () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Demo alert untuk tombol yang belum punya link
+            document.getElementById('portfolioBtn').onclick = (e) => {
+                e.preventDefault();
+                alert('📁 Portofolio website: silahkan hubungi saya via WhatsApp untuk melihat demo hasil karya!');
+            };
+            document.getElementById('testimonialBtn').onclick = (e) => {
+                e.preventDefault();
+                alert('⭐ Testimonial klien: Banyak klien puas dengan hasil website cepat & berkualitas. Hubungi saya untuk referensi!');
+            };
+            document.getElementById('faqBtn').onclick = (e) => {
+                e.preventDefault();
+                alert('❓ FAQ:\n1. Berapa harga? Tergantung kompleksitas.\n2. Berapa lama? 3-7 hari kerja.\n3. Apakah aman? 100% aman dan rahasia.\nHubungi WA untuk info lengkap!');
+            };
+
+            // Ripple effect
+            document.querySelectorAll('.link-card').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                                    ripple.style.borderRadius = '50%';
+                    ripple.style.backgroundColor = 'rgba(108,92,231,0.3)';
+                    ripple.style.pointerEvents = 'none';
+                    ripple.style.width = ripple.style.height = '200px';
+                    ripple.style.left = (e.clientX - rect.left) + 'px';
+                    ripple.style.top = (e.clientY - rect.top) + 'px';
+                    ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                    ripple.style.animation = 'rippleAnim 0.6s ease-out';
+                    ripple.style.zIndex = '1';
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 700);
+                });
             });
-        }
+        });
     </script>
 </body>
 </html>
